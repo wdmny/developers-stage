@@ -122,3 +122,54 @@ The `validate` directive works in conjunction with the [Angular form directive](
     <input type="button"  class="btn btn-small btn-primary" ng-click="myForm.submitted = true" value="Save" />
 </form>
 {% endhighlight %}
+
+# znFormSelect
+
+The `zn-form-select` directive is a searchable dropdown for selecting from a potentially long list of forms. The directive
+has the following options:
+
+- `forms` - an array of form objects
+- `formProperty` - the form property (such as `id`) that should be returned as the `ng-model` value. If no property is specified, then the entire form object will be returned.
+- `ng-model` - the scope variable to store the selected form
+- `ng-disabled` - whether the element should be disabled
+
+{% highlight js%}
+plugin.controller('MyController', function($scope) {
+
+    $scope.forms = [{id: 1, name: 'Form 1'}, {id: 2, name: 'Form 2'} {id: 3, name: 'Form 3'}];
+
+    $scope.selectedFormId = null;
+
+});
+{% endhighlight %}
+
+Apply the directive to your elements:
+
+{% highlight html%}
+<zn-form-select ng-model="selectedFormId" forms="forms" form-property="id"></zn-form-select>
+{% endhighlight %}
+
+# znFormFolderSelect
+
+The `zn-form-folder-select` directive is similar to the form select, except is used for selecting from a list of form folders. The directive has the following options:
+
+- `folders` - an array of folder objects
+- `folderProperty` - the folder property (such as `id`) that should be returned as the `ng-model` value. If no property is specified, then the entire folder object will be returned.
+- `ng-model` - the scope variable to store the selected folder
+- `ng-disabled` - whether the element should be disabled
+
+{% highlight js%}
+plugin.controller('MyController', function($scope) {
+
+    $scope.folders = [{id: 0, name: 'Uncategorized'}, {id: 1, name: 'Folder 1'}, {id: 2, name: 'Form 2'} {id: 3, name: 'Form 3'}];
+
+    $scope.selectedFolderId = null;
+
+});
+{% endhighlight %}
+
+Apply the directive to your elements:
+
+{% highlight html%}
+<zn-form-folder-select ng-model="selectedFolderId" folders="folders" folder-property="id"></zn-form--folder-select>
+{% endhighlight %}
